@@ -1,12 +1,13 @@
 import React from "react";
-import Github from "./Github";
+import {StatusResults, WeekResults} from "./components";
 
 const App = () => {
-  return (
-    <div>
-      <Github />
-    </div>
-  );
+    return (
+        <div>
+            <StatusResults/>
+            <WeekResults/>
+        </div>
+    );
 };
 
 export default App;
