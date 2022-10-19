@@ -1,12 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Github from "./Github";
 
-function App() {
+const App = () => {
   return (
     <div>
-      App
+      <Github />
     </div>
   );
-}
+};
 
 export default App;
