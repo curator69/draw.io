@@ -3,9 +3,7 @@ import React from "react";
 const { Octokit } = require("octokit");
 
 const Github = () => {
-  const octokit = new Octokit({
-    auth: process.env.GTITHUB_TOKEN,
-  });
+  const octokit = new Octokit();
 
   octokit
     .paginate(
