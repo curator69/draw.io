@@ -1,13 +1,13 @@
 import React from "react";
-import {StatusResults, WeekResults} from "./components";
+import { StatusResults, WeekResults } from "./components";
 
 const App = () => {
-    return (
-        <div>
-            <StatusResults/>
-            <WeekResults/>
-        </div>
-    );
+  return (
+    <div>
+      <StatusResults />
+      <WeekResults />
+    </div>
+  );
 };
 
 export default App;
