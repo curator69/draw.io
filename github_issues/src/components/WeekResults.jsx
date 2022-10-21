@@ -4,7 +4,7 @@ import { Octokit } from "octokit";
 const WeekResults = () => {
   const [issues, setIssues] = useState([]);
 
-  const octokit = new Octokit();
+  const octokit = new Octokit({auth: process.env.REACT_APP_GH_PAT});
 
   octokit
     .request(
