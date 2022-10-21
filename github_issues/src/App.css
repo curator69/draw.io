@@ -7,21 +7,44 @@ main {
   padding-top: 5rem;
 }
 
+.heading {
+  margin-bottom: 1rem;
+}
+
 .input-tab {
   padding: 10px 2rem;
   border-radius: 20px;
   all: none;
   width: 50%;
+  margin-bottom: 1rem;
+}
+
+.issues-list {
+  width: 80vw;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.issue {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: gray;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  padding: 1rem 2rem;
 }
 
 .open {
   background-color: green;
-  padding: 2px 5px;
+  padding: 2px 10px;
   border-radius: 50px;
 }
 
 .closed {
   background-color: red;
-  padding: 2px 5px;
+  padding: 2px 10px;
   border-radius: 50px;
 }
