@@ -4,29 +4,41 @@ import { Octokit } from "octokit";
 const StatusResults = () => {
   const [issues, setIssues] = useState([]);
 
-  const octokit = new Octokit({auth: process.env.REACT_APP_GH_PAT});
-  console.log(process.env.REACT_APP_GH_PAT, "code")
+  const octokit = new Octokit({ auth: process.env.REACT_APP_GH_PAT });
 
-  octokit
-    .request(
-      "GET /repos/{owner}/{repo}/issues",
-      { owner: "facebook", repo: "react" },
-      (response) => response.data.map((issue) => issue.title)
-    )
-    .then((issueTitles) => {
-      setIssues(issueTitles.data);
-    });
+  const fetchData = async () => {
+    for (let i = 0; i < 1; i++) {
+      const data = await octokit
+        .request("GET /repos/{owner}/{repo}/issues", {
+          owner: "mui",
+          repo: "material-ui",
+          state: "closed",
+          page: 2,
+          per_page: 25,
+        })
+        .then((response) => response.data)
+        .then((data) => data.map((issue) => issue));
+      console.log(data);
+      setIssues(data);
+    }
+  };
 
   return (
     <div>
       <h1>Status wise count of issues</h1>
+      <button onClick={() => fetchData()}>fetch</button>
       <div>
         <h2>Open Issues Count</h2>
-        <ul>
-          {issues.map((issueTitle, idx) => (
-            <li key={idx}>{issueTitle?.url} </li>
+        <ol>
+          {issues.map((issue) => (
+            <li key={issue.id}>
+              {issue.title}{" "}
+              <span className={(issue.state = "closed" && "open")}>
+                {issue.state}
+              </span>
+            </li>
           ))}
-        </ul>
+        </ol>
       </div>
     </div>
   );
