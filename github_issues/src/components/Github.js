@@ -1,21 +1,16 @@
-import React from "react";
-
 const { Octokit } = require("octokit");
 
-const Github = () => {
-  const octokit = new Octokit();
+const octokit = new Octokit({ auth: process.env.REACT_APP_GH_PAT });
 
-  octokit
-    .paginate(
-      "GET /repos/{owner}/{repo}/issues",
-      { owner: "octokit", repo: "rest.js" },
-      (response) => response.data.map((issue) => issue.title)
-    )
-    .then((issueTitles) => {
-      console.table(issueTitles);
-    });
-
-  return <div>Github</div>;
+export const fetchData = async () => {
+  await octokit
+    .request("GET /repos/{owner}/{repo}/issues", {
+      owner: "axios",
+      repo: "axios",
+      state: "all",
+      page: 2,
+      per_page: 100,
+    })
+    .then((response) => response.data)
+    .then((data) => data.map((issue) => issue));
 };
-
-export default Github;
