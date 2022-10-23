@@ -19,7 +19,6 @@ const App = () => {
       })
       .then((response) => response.data)
       .then((data) => data.map((issue) => issue));
-    console.log(data);
     setIssues(data);
   };
 
@@ -32,8 +31,8 @@ const App = () => {
           Fetch
         </button>
 
-        <StatusResults issues={issues} />
-        <WeekResults issues={issues} />
+        {issues && <StatusResults issues={issues} />}
+        {issues && <WeekResults issues={issues} />}
       </main>
     </div>
   );

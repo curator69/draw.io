@@ -1,24 +1,29 @@
 import React from "react";
 
 const WeekResults = ({ issues }) => {
-  const weekly = issues.map((issueTitle) => {
-    const created_data = new Date(issueTitle.created_at);
-    const today = new Date();
+  const currentDate = new Date();
+  let lastWeekDate = new Date();
+  lastWeekDate.setDate(lastWeekDate.getDate() - 7);
 
-    // calculate the difference between today and upto last 10 weeks issues
-    const diffTime = Math.abs(today - created_data);
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    return Math.ceil(diffDays / 7);
-  });
+  const newDates = issues
+    .map((issue) => issue.created_at)
+    .filter((date) => new Date(date))
+    .map((date) => date.toDateString());
 
-  /* Remove undefined values from array */
-  const filtered = weekly.filter(function (el) {
-    return el != null;
-  });
+  console.log(newDates);
 
   return (
-    <div>
-      <h2>Weekly Issues Count</h2>
+    <div className="title">
+      <h1>Weekly Issues Count:</h1>
+
+      <div className="flex">
+        <div className="flex column">
+          <div>{currentDate.toDateString()}</div>
+          <p>to</p>
+          <div>{lastWeekDate.toDateString()}</div>
+        </div>
+        <div>issueCount</div>
+      </div>
     </div>
   );
 };
