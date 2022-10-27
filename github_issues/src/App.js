@@ -15,7 +15,7 @@ const App = () => {
         repo: "axios",
         state: "all",
         page: 2,
-        per_page: 100,
+        per_page: 1000,
       })
       .then((response) => response.data)
       .then((data) => data.map((issue) => issue));

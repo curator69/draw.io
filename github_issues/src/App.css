@@ -4,6 +4,7 @@ main {
   justify-content: space-evenly;
   min-height: 50vh;
   padding-top: 5rem;
+  padding-bottom: 5rem;
 }
 
 .title {
@@ -41,7 +42,7 @@ main {
 
 .issues-count {
   margin-left: 1rem;
-  background-color: red;
+  background-color: black;
   color: white;
   border-radius: 50%;
   padding: 8px 10px;
@@ -59,4 +60,28 @@ main {
   background-color: gray;
   padding: 10px 20px;
   border-radius: 20px;
+}
+
+.title h1 {
+  margin-bottom: 1rem;
+}
+
+.title ul {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+}
+
+.title li {
+  list-style: none;
+  background-color: gray;
+  color: white;
+  border-radius: 10px;
+  padding: 1rem 2rem;
+  margin-bottom: 1rem;
+}
+
+.title li span {
+  font-weight: 900;
+  color: black;
 }
